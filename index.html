@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pick from results!</title>
+    <title>Make your own brew tour app!</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="scripts.js"></script>
 </head>
 
-<body id="results">
+<body id="home">
     <input type="checkbox" id="drawer-toggle" name="drawer-toggle" />
     <label for="drawer-toggle" id="drawer-toggle-label"></label>
     <header>My Brew Maps</header>
@@ -23,16 +23,15 @@
 
         </ul>
     </nav>
-    <div class="container">
-        <div class="mapContainer"></div>
-    </div>
-    <section id="page-content">
-        <h1>Results</h1>
 
+    <section id="page-content">
+        <h1>Type in the name of the city you would like to find breweries in to create a list of results!</h1>
         <form>
-            <button type="submit" class="buttonOne">Go to Picks</button>
+            <input type="text" placeholder="type name of city..." name="search" class="searchOne">
+            <button type="submit" class="buttonOne">Get Results</button>
         </form>
     </section>
+
 
 </body>
 
