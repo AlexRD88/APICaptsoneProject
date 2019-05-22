@@ -6,32 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Make your own brew tour app!</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script type="text/javascript" src="scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body id="home">
-    <input type="checkbox" id="drawer-toggle" name="drawer-toggle" />
-    <label for="drawer-toggle" id="drawer-toggle-label"></label>
-    <header>My Brew Maps</header>
-    <nav id="drawer">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="picks.html">Picks</a></li>
-            <li><a href="route.html">Route</a></li>
 
-        </ul>
-    </nav>
+    <div id="root"></div>
 
-    <section id="page-content">
-        <h1>Type in the name of the city you would like to find breweries in to create a list of results!</h1>
-        <form>
-            <input type="text" placeholder="type name of city..." name="search" class="searchOne">
-            <button type="submit" class="buttonOne">Get Results</button>
-        </form>
-    </section>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="js/common.module.js"></script> -->
+    <script src="js/map.module.js"></script>
+    <script src="js/results.module.js"></script>
+    <script src="js/landing.module.js"></script>
+    <script src="js/main.module.js"></script>
 
 </body>
 
