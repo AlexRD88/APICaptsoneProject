@@ -111,24 +111,24 @@
 
 //     function _displayResults() {
 
-//     }
+// //     }
 
-//     // public
-//      function renderBreweryPage() {
+// //     // public
+// //      function renderBreweryPage() {
 
-//      }
+// //      }
 
 
-//     // public interface
-//     return {
-//         render: renderBreweryPage
-//     }
-// })()
+// //     // public interface
+// //     return {
+// //         render: renderBreweryPage
+// //     }
+// // })()
 
-// breweryModule.render();
+// // breweryModule.render();
 
-// const myModule = (function() {
-// private
+// // const myModule = (function() {
+// // private
 
 
 
