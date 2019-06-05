@@ -10,9 +10,9 @@ const landingModule = (function () {
     $('#getResults').submit(function (event) {
       event.preventDefault();
       let searchCity = $('#cityName').val(); // start spinner
+
       apiModule.getBreweries(searchCity)
-    
-        .then(locations => { // stop spinner
+        .then(locations => { 
           state.locations = locations
           state.currentPage = 'results';
           _render(state);

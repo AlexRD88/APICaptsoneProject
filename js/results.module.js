@@ -6,7 +6,7 @@ const resultsModule = (function () {
   let _render;
 
   function newSearch(state) {
-   
+
     $('#getResults').submit(function (event) {
       event.preventDefault();
 
@@ -23,35 +23,33 @@ const resultsModule = (function () {
 
   function drawerToggle(state) {
     $('#toggle-nav').click(function () {
-     const newState = {
-       ...state,
-       drawerOpen: !state.drawerOpen
-     };
-     _render(newState);
+      const newState = {
+        ...state,
+        drawerOpen: !state.drawerOpen
+      };
+      _render(newState);
     });
   }
 
   function removeLocation(state) {
-    
-    $('.resultsListNav').on('click', 'li', function(){
-      
+
+    $('.resultsListNav').on('click', 'li', function () {
+
       const dataId = $(this).closest('li').data('id');
-      console.log(dataId)
-      // FLAG - be careful of implicit type conversion in filter. remember to change when we get real results from api.
-      const updatedLocations = state.userLocations.filter(location => location.id != dataId);
       
+      // FLAG - be careful of implicit type conversion in filter. remember to change when we get real results from api.
+      const updatedLocations = state.userLocations.filter(location => location.id !== dataId);
+
       const newState = {
         ...state,
         userLocations: updatedLocations
       }
-      
-      _render(newState);
-      console.log(newState)
-      });
-      
-    }
 
-  
+      _render(newState);
+      
+    });
+
+  }
 
   function renderLocation(location) {
     return `
@@ -67,7 +65,7 @@ const resultsModule = (function () {
 
   function renderNavDrawer(state) {
     const userLocations = state.userLocations.map(renderLocation).join('')
-  
+
     return `
        <nav id="drawer" class="${state.drawerOpen ? 'open' : ''}">
           <button class="resultsPageButton" type="button"><a href="details.html">Create Route</a></button>
@@ -89,29 +87,29 @@ const resultsModule = (function () {
     `
   }
 
-  
+
 
   function renderPage(state) {
-    
+
     const header = renderHeader();
     const navDrawer = renderNavDrawer(state);
-    
+
     const page = header + navDrawer;
 
     $('#root').html(page)
     drawerToggle(state);
     removeLocation(state);
     newSearch(state);
-    mapModule.initiate(_render, 'map', state);
+    mapModule.initiate(_render, state);
     mapModule.renderMarkers(state);
     $('#map-container').show();
-    
+
   }
 
   return {
     render: renderPage,
     initiate,
-   
+
   }
 })();
 
