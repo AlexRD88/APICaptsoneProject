@@ -8,10 +8,11 @@ const mapModule = (function () {
   function _renderContent(location) {
 
     return `
-      <li data-id='${location.id}'>
+      <li data-id='${location.id}' class="markerInfoWindows">
         <a href="${location.website}" target="blank">${location.name}</a><br>
         ${location.streetAddress} <br>
         ${location.phoneNumber} <br>
+        ${location.established} <br>
         <i class="far fa-plus-square fa-2x addBtn" data-add-location></i>
       </li>    
     `
@@ -56,7 +57,7 @@ const mapModule = (function () {
 
   function _renderMarkers(state) {
     const locationMarkers = state.locations.map(_makeMarker)
-
+    _handleAddLocation(state);
 
   }
 
@@ -66,13 +67,15 @@ const mapModule = (function () {
       const addedLocation = state.locations.find(function (location) {
         return dataId === location.id
       })
+      console.log(addedLocation)
       const newState = {
         ...state,
         userLocations: [...state.userLocations, addedLocation]
       }
 
-      state.userLocations.push(addedLocation);
-      _render(state);
+      // state.userLocations.push(addedLocation);
+      console.log("add location", state)
+      _render(newState);
 
     })
   }
@@ -91,13 +94,13 @@ const mapModule = (function () {
       lat: state.locations[0].latitude,
       lng: state.locations[0].longitude
     };
-   console.log(centerLocation)
+   
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
       center: centerLocation
     });
 
-    _handleAddLocation(state);
+    
   }
 
 

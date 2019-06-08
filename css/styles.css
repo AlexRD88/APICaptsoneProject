@@ -1,5 +1,6 @@
 h1 {
-    font-size: 16px;
+    font-size: 28px;
+    margin-bottom: 18px;
 }
 
 .main-header {
@@ -14,8 +15,8 @@ h1 {
     
 }
 form {
-    display: flex;
-    justify-content: flex-start;
+    display:flex;
+    align-items: center;
 }
 
 .lp-container {
@@ -30,14 +31,20 @@ form {
 .landingPageButton {
     border: 1px solid black;
     border-radius: 12px;
-    padding: 15px;
+    padding: 8px;
+    margin-top:10px;
     font-size: 20px;
     text-decoration: none;
+    
 }
 
 .landingPageButton a {
     text-decoration: none;
     color: black;
+    
+}
+.landingPageButton:hover {
+    background-color: #F27405;
 }
 
 .landingPageSearch {
@@ -45,14 +52,32 @@ form {
     border-radius: 12px;
     padding: 10px;
     font-size: 14px;
-    width: 55%;
+    width: 225px;
     max-width: 300px;
+    margin-left: 10px;
+}
+.resultsPageSearch {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 14px;
+    width: 225px;
+    max-width: 300px;
+    margin-left: 10px;
+}
+.resultsPageFBSubmit {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 8px;
+    margin-left: 10px;
+    font-size: 20px;
+    text-decoration: none;
 }
 
 .navBarButton {
     border-radius: 12px;
-    padding: 5px;
-    font-size: 11px;
+    padding: 10px;
+    font-size: 13px;
     text-decoration: none;
     margin-left: 10px;
 }
@@ -62,11 +87,15 @@ form {
     color: black;
 }
 
+.navBarButton:hover {
+    background-color: #F27405;
+}
+
 .navBarSearch {
     border: 1px solid black;
     border-radius: 12px;
-    padding: 5px;
-    width: 200px;
+    padding: 11px;
+    width: 250px;
     font-size: 11px;
     text-decoration: none;
     margin-left: 30px;
@@ -105,20 +134,11 @@ form {
     
 }
 
-/* .resultsList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    list-style: none;
-
-}
-
-.resultsListNav {
+#getResults {
     display: flex;
     flex-direction: column;
-    list-style: none;
-
-} */
+    align-items: center;   
+}
 
 .resultsListNav li {
     color: #c7c7c7;
@@ -149,6 +169,9 @@ form {
     height: auto;
     padding: 20px;
     text-align: right;
+}
+.markerInfoWindows {
+    list-style: none;
 }
 
 
@@ -211,17 +234,6 @@ body {
     /* z-index: 0; */
 }
 
-/* adds "hamburger" menu icon */
-
-#drawer-toggle-label:before {
-    content: '';
-    display: block;
-    position: absolute;
-    height: 2px;
-    width: 24px;
-
-}
-
 /* drawer menu pane - note the 0px width */
 
 #drawer {
@@ -231,7 +243,8 @@ body {
     /* add breakpoint to have right:0 on larger screens */
     width: 300px;
     height: 100%;
-    background-color: #9a9a9a;
+    background-color: whitesmoke;
+    border-radius: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 20px;

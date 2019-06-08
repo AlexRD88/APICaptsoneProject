@@ -3,16 +3,24 @@
 
 
 const resultsModule = (function () {
+
   let _render;
 
   function newSearch(state) {
-
-    $('#getResults').submit(function (event) {
+    $('#getNewResults').submit(function (event) {
       event.preventDefault();
+      let searchCity = $('#cityName').val(); // start spinner
 
-      state.currentPage = 'results';
-
-      _render(state);
+      apiModule.getBreweries(searchCity)
+        .then(locations => {
+          state.locations = locations
+          _render(state);
+         
+          //need to show that request is in process loading spinner? 
+        })
+        .catch(err => {
+          // handle error
+        })
     })
   }
 
@@ -33,10 +41,10 @@ const resultsModule = (function () {
 
   function removeLocation(state) {
 
-    $('.resultsListNav').on('click', 'li', function () {
+    $('.resultsListNav').on('click', '.removeBtn', function () {
 
       const dataId = $(this).closest('li').data('id');
-      
+
       // FLAG - be careful of implicit type conversion in filter. remember to change when we get real results from api.
       const updatedLocations = state.userLocations.filter(location => location.id !== dataId);
 
@@ -44,9 +52,10 @@ const resultsModule = (function () {
         ...state,
         userLocations: updatedLocations
       }
+      console.log("remove location", newState)
 
-      _render(newState);
-      
+      _render(newState)
+
     });
 
   }
@@ -54,9 +63,10 @@ const resultsModule = (function () {
   function renderLocation(location) {
     return `
       <li data-id='${location.id}'>
-        <a href="${location.website}" target="blank">1.${location.name}</a><br>
+        <a href="${location.website}" target="blank">${location.name}</a><br>
         ${location.streetAddress} <br>
         ${location.phoneNumber} <br>
+        ${location.established} <br>
         <i class="far fa-minus-square fa-2x removeBtn"></i>
       </li>    
     `
@@ -78,15 +88,15 @@ const resultsModule = (function () {
   function renderHeader() {
     return `
         <header class="main-header">
-          <form id="getResults">
+          <form id="getNewResults">
             <i id="toggle-nav" class="fa fa-bars fa-2x"></i>
-            <input class="navBarSearch city-name-input" type="text" placeholder="Miami, Los Angeles, New york" required>
-            <button class="navBarButton city-name-search" type="submit" value="search">Find Breweries!</button>
+            <input class="resultsPageSearch city-name-input" id="cityName" type="text" placeholder="Miami, Los Angeles, New york" required>
+            <button id="submitButton" class="resultsPageFBSubmit city-name-search" type="submit" value="search">Find Breweries</button>
           </form>
         </header>
     `
   }
-
+ 
 
 
   function renderPage(state) {

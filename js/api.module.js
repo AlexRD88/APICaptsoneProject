@@ -46,12 +46,13 @@ const apiModule = (function () {
     
     return locations.map(location => {
       return {
-        website: location.website || "",
+        website: location.website || location.brewery.website,
         name: location.brewery.name,
-        streetAddress: location.streetAddress,
+        streetAddress: location.streetAddress || "",
         latitude: location.latitude,
         longitude: location.longitude,
-        phoneNumber: location.phone,
+        phoneNumber: location.phone || "",
+        established: "Est. " + location.brewery.established || "",
         id: location.id
       }
 
