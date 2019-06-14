@@ -5,6 +5,7 @@ const mapModule = (function () {
   let _render;
   let map;
 
+
   function _renderContent(location) {
 
     return `
@@ -13,7 +14,7 @@ const mapModule = (function () {
         ${location.streetAddress} <br>
         ${location.phoneNumber} <br>
         ${location.established} <br>
-        <i class="far fa-plus-square fa-2x addBtn" data-add-location></i>
+        <i class="fa fa-beer fa-2x addBtn" data-add-location id="beerGlass"></i>
       </li>    
     `
   }
@@ -40,24 +41,31 @@ const mapModule = (function () {
       title: `${location.name}`
     });
 
-
     marker.addListener('click', function () {
-      infowindow.open(map, marker);
+      infowindow.close();
+      infowindow.open(map, this);
 
     });
     google.maps.event.addListener(map, "click", function (e) {
       infowindow.close(e);
-
     });
+    
+  
 
     return marker;
-
-
+    
   }
+
+
 
   function _renderMarkers(state) {
     const locationMarkers = state.locations.map(_makeMarker)
     _handleAddLocation(state);
+    geocodeAddress(state.currentCity)
+      .then(location => {
+        map.setCenter(location);
+      })
+
 
   }
 
@@ -67,45 +75,69 @@ const mapModule = (function () {
       const addedLocation = state.locations.find(function (location) {
         return dataId === location.id
       })
-      console.log(addedLocation)
+
       const newState = {
         ...state,
         userLocations: [...state.userLocations, addedLocation]
       }
-
-      // state.userLocations.push(addedLocation);
-      console.log("add location", state)
       _render(newState);
 
     })
   }
-
+  function geocodeAddress(address) {
+    let geocoder = new google.maps.Geocoder();
+    return new Promise((resolve,reject) => {
+      geocoder.geocode({
+        'address': address
+      }, function (results, status) {
+        if (status === 'OK') {
+          resolve(results[0].geometry.location);
+        } else {
+          reject(console.log('Geocode was not successful for the following reason: ' + status)); 
+        }
+      });
+    })
+   
+  }
 
   function initiate(mapRender, state) {
     if (map) {
       return;
     }
-
-    _render = mapRender;
-    
-    
-
-    let centerLocation = {
-      lat: state.locations[0].latitude,
-      lng: state.locations[0].longitude
-    };
-   
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
-      center: centerLocation
-    });
-
+      center: {
+        lat: 0,
+        lng: 0
+      },
+      styles: [
+        {
+            "featureType": "all",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "hue": "#ffaa00"
+                }
+            ]
+        }
+    ]
     
-  }
 
+    });
+    _render = mapRender;
+    let address = state.currentCity;
+    geocodeAddress(address)
+      .then(location => {
+        map.setCenter(location)
+      })
+  }
 
   return {
     renderMarkers: _renderMarkers,
     initiate
+
   }
 })();

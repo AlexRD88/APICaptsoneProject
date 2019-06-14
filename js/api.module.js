@@ -16,14 +16,8 @@ const apiModule = (function () {
 
   function getBreweries(searchCity) {
 
-    const url = `https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/locations/?locality=${searchCity}&key=f099de1efb32c7a5500f54ef59c38e66&locationType=micro`
+    const url = `https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/locations/?locality=${searchCity}&key=${breweryApiKey}&locationType=micro`
 
-    // const promise = new Promise((resolve, reject) => {
-    //   $.getJSON(url)
-    //     .done(resolve)
-    //     .fail(reject)
-    // })
-    // return promise
 
     return fetch(url)
       .then(response => {
@@ -48,14 +42,14 @@ const apiModule = (function () {
       return {
         website: location.website || location.brewery.website,
         name: location.brewery.name,
-        streetAddress: location.streetAddress || "",
+        streetAddress: location.streetAddress || "N/A",
         latitude: location.latitude,
         longitude: location.longitude,
-        phoneNumber: location.phone || "",
-        established: "Est. " + location.brewery.established || "",
+        phoneNumber: location.phone || "N/A",
+        established: "Est. " + location.brewery.established || "N/A",
         id: location.id
       }
-
+      
     })
 
   }

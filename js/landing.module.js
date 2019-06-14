@@ -10,13 +10,14 @@ const landingModule = (function () {
     $('#getResults').submit(function (event) {
       event.preventDefault();
       let searchCity = $('#cityName').val(); // start spinner
-
+      $(".spinner-wrapper").removeClass("hidden");
       apiModule.getBreweries(searchCity)
-        .then(locations => { 
+        .then(locations => {         
           state.locations = locations
           state.currentPage = 'results';
+          state.currentCity = searchCity
           _render(state);
-          //need to show that request is in process loading spinner? 
+          $(".spinner-wrapper").addClass("hidden")
         })
         .catch(err => {
           // handle error
@@ -35,7 +36,8 @@ const landingModule = (function () {
         <figure>
             <img class="beerLogo" src="images/beerLogo.png" alt="Brew App Logo">
         </figure>
-        <h1>Enter a city name to begin!</h1>
+        <p>Create your very own custom micro brewery route for any U.S. city</p>
+        <h2>Enter a city name to begin!</h2>
         <form id="getResults">
           <input class="landingPageSearch city-name-input" id="cityName" type="text" placeholder="Miami, Los Angeles, New york" required>
           <button id="submitButton" class="landingPageButton city-name-search" type="submit" value="search">Find Breweries</button>

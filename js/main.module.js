@@ -3,9 +3,9 @@
 
 const STORE = {
   currentPage: "landing",
+  currentCity: "",
   drawerOpen: false,
   locations: [],
-  // currentLocation: "",
   userLocations: []
 }
 // #2 our main module is a variable that is equal to a self invoking function that holds all of 

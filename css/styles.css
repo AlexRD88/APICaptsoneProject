@@ -1,21 +1,56 @@
-h1 {
-    font-size: 28px;
-    margin-bottom: 18px;
+body {
+    background-color: #F2B705;
+}
+
+a {
+    color: #BF4904;
+    font-size: 130%;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #00A0C6;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: #F27405;
+    color: black;
+    font-family: 'Lora', serif;
+    border: 2px solid #BF4904;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-family: 'Bree Serif', serif;
+    color: black;
+}
+
+p {
+    font-size: 18px;
+    font-style: italic;
+    font-family: 'Lora', serif;
+    padding: 50px;
+    width: 120%;
+    text-align: center;
+    margin-top: -150px;
 }
 
 .main-header {
-    border: 1px solid black;
     padding: 5px;
     top: 0;
     right: 0;
     position: absolute;
     z-index: 1;
-    background-color: white;
+    background-color: #F2B705;
     width: 100%;
-    
+
 }
+
 form {
-    display:flex;
+    display: flex;
     align-items: center;
 }
 
@@ -25,59 +60,89 @@ form {
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
-    
+
 }
 
 .landingPageButton {
-    border: 1px solid black;
+    border: 1px solid #BF4904;
     border-radius: 12px;
-    padding: 8px;
-    margin-top:10px;
-    font-size: 20px;
-    text-decoration: none;
-    
+    padding: 18px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-family: 'Lora', serif;
+    width: 80%;
 }
 
 .landingPageButton a {
     text-decoration: none;
     color: black;
-    
+
 }
+
+#li-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    width: 100%;
+    background-color: #F2B705;
+    border: 2px solid #BF4904;
+    padding: 12px;
+}
+
+#beerGlass {
+    position: absolute;
+    left: 80%;
+    top: 65%;
+}
+
+#trashCan {
+    position: absolute;
+    margin-left: 65%;
+}
+
 .landingPageButton:hover {
     background-color: #F27405;
 }
 
 .landingPageSearch {
-    border: 1px solid black;
     border-radius: 12px;
-    padding: 10px;
-    font-size: 14px;
-    width: 225px;
-    max-width: 300px;
-    margin-left: 10px;
+    padding: 16px;
+    font-size: 90%;
+    font-family: 'Lora', serif;
+    width: 175%;
+    text-align: center;
 }
+
+.landingPageSearch:hover {
+    background-color: lightgray;
+}
+
 .resultsPageSearch {
-    border: 1px solid black;
     border-radius: 12px;
     padding: 10px;
-    font-size: 14px;
-    width: 225px;
-    max-width: 300px;
+    width: 256px;
     margin-left: 10px;
+    font-family: 'Lora', serif;
 }
+.resultsPageSearch:hover {
+    background-color: lightgray;
+}
+
 .resultsPageFBSubmit {
-    border: 1px solid black;
+    border: 1px solid #BF4904;
     border-radius: 12px;
-    padding: 8px;
     margin-left: 10px;
-    font-size: 20px;
+    font-family: 'Lora', serif;
     text-decoration: none;
+    padding: 12px;
 }
 
 .navBarButton {
     border-radius: 12px;
     padding: 10px;
     font-size: 13px;
+    font-family: 'Lora', serif;
+    background-color: #F27405;
     text-decoration: none;
     margin-left: 10px;
 }
@@ -92,22 +157,24 @@ form {
 }
 
 .navBarSearch {
-    border: 1px solid black;
+    border: 1px solid #BF4904;
     border-radius: 12px;
     padding: 11px;
     width: 250px;
     font-size: 11px;
+    font-family: 'Lora', serif;
     text-decoration: none;
     margin-left: 30px;
 }
 
 .resultsPageButton {
     border-radius: 12px;
-    padding: 10px;
-    font-size: 20px;
-    margin-top: 10px;
+    padding: 11px;
+    background-color: #F27405;
+    font-size: 16px;
+    font-family: 'Lora', serif;
     margin-bottom: 20px;
-    margin-left: 62px;
+    margin-top: 20px;
 }
 
 .resultsPageButton a {
@@ -115,9 +182,11 @@ form {
     color: black;
 
 }
+
 .detailsPageButton {
     border-radius: 12px;
     padding: 10px;
+    background-color: #F27405;
     margin-top: 10px;
 }
 
@@ -129,27 +198,24 @@ form {
 
 
 .beerLogo {
-    width: auto;
-    height: 400px;
-    
+    width: 465px;
+    margin-top: -55px;
+
 }
 
 #getResults {
     display: flex;
     flex-direction: column;
-    align-items: center;   
+    align-items: center;
 }
 
 .resultsListNav li {
-    color: #c7c7c7;
+    color: black;
+    font-family: 'Lora', serif;
 }
 
 
 .addBtn {
-    text-align: right;
-}
-
-.removeBtn {
     text-align: right;
 }
 
@@ -161,7 +227,6 @@ form {
     color: red;
 }
 
-
 .resultsList li {
     margin: 20px;
     border: 1px solid black;
@@ -170,6 +235,7 @@ form {
     padding: 20px;
     text-align: right;
 }
+
 .markerInfoWindows {
     list-style: none;
 }
@@ -177,6 +243,7 @@ form {
 
 .hidden {
     display: none;
+    
 }
 
 
@@ -205,7 +272,7 @@ form {
 html,
 body {
     height: 100%;
-    
+
 }
 
 /* gets the actual input out of the way; 
@@ -239,15 +306,19 @@ body {
 #drawer {
     position: fixed;
     top: 44px;
-    left: -300px;
+    left: -100%;
+    width: 100%;
     /* add breakpoint to have right:0 on larger screens */
-    width: 300px;
+    max-width: 300px;
     height: 100%;
-    background-color: whitesmoke;
+    background-color: #F2B705;
+    ;
     border-radius: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -259,6 +330,7 @@ body {
 
 #drawer ul {
     list-style-type: none;
+    font-size: 80%;
 }
 
 #drawer ul a:hover {
@@ -269,18 +341,47 @@ body {
 /* Map Styles */
 
 #map {
-    
+
     height: 100%;
-    border: 3px solid black;
+   
 }
 
 .map-section {
-    top: 40px;
+    top: 50px;
     left: 0;
     right: 0;
     bottom: 0;
     position: absolute;
     width: auto;
     height: auto;
-    
+
+}
+
+/* spinner */
+.spinner-1:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 60px;
+    width: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    border-radius: 50%;
+    border: 3px solid lightgray;
+    border-top-color: coral;
+    animation: spinner 0.7s linear infinite;
+}
+
+.spinner-wrapper {
+    height: 100%;
+    width: 100%;
+    background-color: #F2B705;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
 }
