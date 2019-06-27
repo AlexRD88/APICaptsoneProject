@@ -73,10 +73,8 @@ form {
     width: 80%;
 }
 
-.landingPageButton a {
-    text-decoration: none;
-    color: black;
-
+.landingPageButton:hover {
+    background-color: rgb(19, 226, 19);
 }
 
 #li-container {
@@ -100,14 +98,10 @@ form {
     margin-left: 65%;
 }
 
-.landingPageButton:hover {
-    background-color: #F27405;
-}
-
 .landingPageSearch {
     border-radius: 12px;
     padding: 16px;
-    font-size: 90%;
+    font-size: 16px;
     font-family: 'Lora', serif;
     width: 175%;
     text-align: center;
@@ -119,41 +113,28 @@ form {
 
 .resultsPageSearch {
     border-radius: 12px;
+    font-size: 13px;
     padding: 10px;
     width: 256px;
     margin-left: 10px;
     font-family: 'Lora', serif;
 }
+
 .resultsPageSearch:hover {
     background-color: lightgray;
 }
 
 .resultsPageFBSubmit {
-    border: 1px solid #BF4904;
     border-radius: 12px;
+    font-size: 12px;
     margin-left: 10px;
     font-family: 'Lora', serif;
     text-decoration: none;
     padding: 12px;
 }
 
-.navBarButton {
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 13px;
-    font-family: 'Lora', serif;
-    background-color: #F27405;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
-.navBarButton a {
-    text-decoration: none;
-    color: black;
-}
-
-.navBarButton:hover {
-    background-color: #F27405;
+.resultsPageFBSubmit:hover {
+    background-color: rgb(19, 226, 19);
 }
 
 .navBarSearch {
@@ -177,30 +158,13 @@ form {
     margin-top: 20px;
 }
 
-.resultsPageButton a {
-    text-decoration: none;
-    color: black;
-
+.resultsPageButton:hover {
+    background-color: rgb(19, 226, 19);
 }
-
-.detailsPageButton {
-    border-radius: 12px;
-    padding: 10px;
-    background-color: #F27405;
-    margin-top: 10px;
-}
-
-.detailsPageButton a {
-    text-decoration: none;
-    color: black;
-
-}
-
 
 .beerLogo {
     width: 465px;
     margin-top: -55px;
-
 }
 
 #getResults {
@@ -214,7 +178,6 @@ form {
     font-family: 'Lora', serif;
 }
 
-
 .addBtn {
     text-align: right;
 }
@@ -227,15 +190,6 @@ form {
     color: red;
 }
 
-.resultsList li {
-    margin: 20px;
-    border: 1px solid black;
-    width: 25%;
-    height: auto;
-    padding: 20px;
-    text-align: right;
-}
-
 .markerInfoWindows {
     list-style: none;
 }
@@ -243,13 +197,11 @@ form {
 
 .hidden {
     display: none;
-    
+
 }
 
 
-
-
-/* Drawer Test */
+/* Drawer */
 
 * {
     -webkit-box-sizing: border-box;
@@ -267,53 +219,22 @@ form {
     -webkit-text-size-adjust: none;
 }
 
-/* Makes sure that everything is 100% height */
-
 html,
 body {
     height: 100%;
-
-}
-
-/* gets the actual input out of the way; 
-  we're going to style the label instead */
-
-
-#drawer-toggle {
-    position: absolute;
-    opacity: 1;
-    display: none;
-}
-
-#drawer-toggle-label {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    right: 0px;
-    height: 50px;
-    width: 50px;
-    display: block;
-    position: fixed;
-    background: rgba(255, 255, 255, .0);
-    /* z-index: 0; */
 }
 
 /* drawer menu pane - note the 0px width */
 
 #drawer {
     position: fixed;
-    top: 44px;
+    top: 53px;
     left: -100%;
     width: 100%;
     /* add breakpoint to have right:0 on larger screens */
     max-width: 300px;
     height: 100%;
     background-color: #F2B705;
-    ;
-    border-radius: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 20px;
@@ -330,11 +251,11 @@ body {
 
 #drawer ul {
     list-style-type: none;
-    font-size: 80%;
+    font-size: 12px;
 }
 
 #drawer ul a:hover {
-    color: white;
+    color: #00A0C6;
 }
 
 
@@ -343,17 +264,12 @@ body {
 #map {
 
     height: 100%;
-   
+
 }
 
 .map-section {
-    top: 50px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    width: auto;
-    height: auto;
+    position: relative;
+    height: 100%;
 
 }
 
@@ -372,16 +288,39 @@ body {
     border: 3px solid lightgray;
     border-top-color: coral;
     animation: spinner 0.7s linear infinite;
+    z-index: 999;
 }
 
 .spinner-wrapper {
     height: 100%;
     width: 100%;
     background-color: #F2B705;
+    z-index: 999;
 }
 
 @keyframes spinner {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+/* media queries */
+
+@media only screen and (min-width: 768px) {
+    form {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    #toggle-nav {
+        display: none;
+    }
+
+    #drawer {
+        left: 0;
+    }
+
 }

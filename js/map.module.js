@@ -4,6 +4,8 @@ const mapModule = (function () {
 
   let _render;
   let map;
+  let directionsService;
+  let directionsDisplay;
 
 
   function _renderContent(location) {
@@ -49,11 +51,11 @@ const mapModule = (function () {
     google.maps.event.addListener(map, "click", function (e) {
       infowindow.close(e);
     });
-    
-  
+
+
 
     return marker;
-    
+
   }
 
 
@@ -65,7 +67,9 @@ const mapModule = (function () {
       .then(location => {
         map.setCenter(location);
       })
-
+      .catch(error => {
+        console.log(error)
+      })
 
   }
 
@@ -75,58 +79,63 @@ const mapModule = (function () {
       const addedLocation = state.locations.find(function (location) {
         return dataId === location.id
       })
-
-      const newState = {
-        ...state,
-        userLocations: [...state.userLocations, addedLocation]
+      if (addedLocation) {
+        const newState = {
+          ...state,
+          userLocations: [...state.userLocations, addedLocation]
+        }
+        _render(newState);
       }
-      _render(newState);
 
     })
   }
+
   function geocodeAddress(address) {
     let geocoder = new google.maps.Geocoder();
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       geocoder.geocode({
         'address': address
       }, function (results, status) {
         if (status === 'OK') {
           resolve(results[0].geometry.location);
         } else {
-          reject(console.log('Geocode was not successful for the following reason: ' + status)); 
+          reject(console.log('Geocode was not successful for the following reason: ' + status));
         }
       });
     })
-   
+
   }
 
   function initiate(mapRender, state) {
     if (map) {
       return;
     }
+
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
       center: {
         lat: 0,
         lng: 0
       },
-      styles: [
-        {
-            "featureType": "all",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "visibility": "on"
-                },
-                {
-                    "hue": "#ffaa00"
-                }
-            ]
-        }
-    ]
-    
-
+      styles: [{
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "on"
+          },
+          {
+            "hue": "#ffaa00"
+          }
+        ]
+      }]
     });
+
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer({
+      map: map,
+      suppressMarkers: true
+    });
+
     _render = mapRender;
     let address = state.currentCity;
     geocodeAddress(address)
@@ -135,9 +144,52 @@ const mapModule = (function () {
       })
   }
 
+  function generateWaypoints(userLocations) {
+    return userLocations.map(function (location) {
+      return {
+        location: new google.maps.LatLng(location.latitude, location.longitude),
+        stopover: true
+      }
+    });
+  }
+
+  function createRoute(userLocations) {
+    let waypts = generateWaypoints(userLocations);
+
+    const removeOrigin = waypts.shift();
+    const removeDestination = waypts.pop();
+
+    const origin = {
+      lat: userLocations[0].latitude,
+      lng: userLocations[0].longitude
+    }
+    const destination = {
+      lat: userLocations.slice(-1)[0].latitude,
+      lng: userLocations.slice(-1)[0].longitude
+    }
+
+    directionsService.route({
+      origin: origin,
+      destination: destination,
+      waypoints: waypts,
+      optimizeWaypoints: true,
+      travelMode: 'DRIVING'
+    }, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      } else {
+        console.log('Directions request failed due to ' + status);
+      }
+    })
+
+  }
+
+
+
   return {
     renderMarkers: _renderMarkers,
-    initiate
+    initiate,
+    createRoute
 
   }
 })();

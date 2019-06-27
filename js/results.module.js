@@ -9,15 +9,15 @@ const resultsModule = (function () {
   function newSearch(state) {
     $('#getNewResults').submit(function (event) {
       event.preventDefault();
-      let searchCity = $('#cityName').val(); // start spinner
+      let searchCity = $('#cityName').val();
       $(".spinner-wrapper").removeClass("hidden");
       apiModule.getBreweries(searchCity)
         .then(locations => {
           state.locations = locations
           state.currentCity = searchCity
+          console.log(state)
           _render(state);
           $(".spinner-wrapper").addClass("hidden")
-          //need to show that request is in process loading spinner? 
         })
         .catch(err => {
           // handle error
@@ -38,9 +38,6 @@ const resultsModule = (function () {
       };
       _render(newState);
     });
-    $('#map').click(function (){
-      $('#drawer').removeClass('#drawer.open')
-    })
   }
 
   function removeLocation(state) {
@@ -82,11 +79,14 @@ const resultsModule = (function () {
 
 
   function renderNavDrawer(state) {
+
+    console.log("inside nav drawer", state)
+
     const userLocations = state.userLocations.map(renderLocation).join('')
-    const isOpen = $(window).width() > 880 ? true : state.drawerOpen 
+    const isOpen = $(window).width() > 880 ? true : state.drawerOpen
     return `
        <nav id="drawer" class="${isOpen ? 'open' : ''}">
-          <button class="resultsPageButton" type="button"><a href="details.html">Create Route</a></button>
+          <button id="js-create-route" class="resultsPageButton" type="button">Create Route</button>
             <ul class="resultsListNav">
             ${userLocations}
             </ul>
@@ -104,8 +104,13 @@ const resultsModule = (function () {
         </header>
     `
   }
- 
 
+  function handleCreateRoute(state) {
+    $('#js-create-route').click(function (e) {
+      mapModule.createRoute(state.userLocations)
+    })
+
+  }
 
   function renderPage(state) {
 
@@ -118,6 +123,7 @@ const resultsModule = (function () {
     drawerToggle(state);
     removeLocation(state);
     newSearch(state);
+    handleCreateRoute(state);
     mapModule.initiate(_render, state);
     mapModule.renderMarkers(state);
     $('#map-container').show();
@@ -132,8 +138,3 @@ const resultsModule = (function () {
 })();
 
 $(resultsModule.initiate);
-
-
-
-
-
