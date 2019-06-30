@@ -74,7 +74,7 @@ form {
 }
 
 .landingPageButton:hover {
-    background-color: rgb(19, 226, 19);
+    background-color: rgb(72, 167, 72);
 }
 
 #li-container {
@@ -134,7 +134,7 @@ form {
 }
 
 .resultsPageFBSubmit:hover {
-    background-color: rgb(19, 226, 19);
+    background-color: rgb(72, 167, 72);
 }
 
 .navBarSearch {
@@ -159,7 +159,7 @@ form {
 }
 
 .resultsPageButton:hover {
-    background-color: rgb(19, 226, 19);
+    background-color: rgb(72, 167, 72);
 }
 
 .beerLogo {
@@ -273,6 +273,18 @@ body {
 
 }
 
+#directions-display {
+    width: 400px;
+    height: 100%;
+    float: right;
+    overflow: auto;
+    background-color: white;
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+
+}
+
 /* spinner */
 .spinner-1:before {
     content: "";
@@ -321,6 +333,13 @@ body {
 
     #drawer {
         left: 0;
+    }
+
+    #map {
+        margin-left: 300px;
+    }
+    #directions-display {
+        margin-left: 300px;
     }
 
 }

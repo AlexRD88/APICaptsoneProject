@@ -135,6 +135,7 @@ const mapModule = (function () {
       map: map,
       suppressMarkers: true
     });
+    directionsDisplay.setPanel(document.getElementById('directions-display'));
 
     _render = mapRender;
     let address = state.currentCity;

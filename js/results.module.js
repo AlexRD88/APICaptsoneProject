@@ -80,8 +80,6 @@ const resultsModule = (function () {
 
   function renderNavDrawer(state) {
 
-    console.log("inside nav drawer", state)
-
     const userLocations = state.userLocations.map(renderLocation).join('')
     const isOpen = $(window).width() > 880 ? true : state.drawerOpen
     return `
