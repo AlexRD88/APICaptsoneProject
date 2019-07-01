@@ -1,7 +1,7 @@
 'use strict'
 
 const apiModule = (function () {
-  const breweryApiKey = "f099de1efb32c7a5500f54ef59c38e66"
+  
 
 
   function watchSubmitForm() {
@@ -15,6 +15,7 @@ const apiModule = (function () {
   }
 
   function getBreweries(searchCity) {
+    const breweryApiKey = "f099de1efb32c7a5500f54ef59c38e66"
 
     const url = `https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/locations/?locality=${searchCity}&key=${breweryApiKey}&locationType=micro`
 
