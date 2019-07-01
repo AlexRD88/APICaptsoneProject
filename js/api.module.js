@@ -1,5 +1,5 @@
 'use strict'
-
+const breweryApiKey = "f099de1efb32c7a5500f54ef59c38e66"
 const apiModule = (function () {
 
 
