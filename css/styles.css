@@ -299,6 +299,12 @@ body {
     cursor: not-allowed;
 }
 
+#headerLogo {
+    position: absolute;
+    top: -57px;
+    left: 55px;
+}
+
 /* spinner */
 .spinner-1:before {
     content: "";
@@ -344,7 +350,7 @@ body {
     #toggle-nav {
         display: none;
     }
-
+    
     #drawer {
         left: 0;
     }
@@ -356,4 +362,10 @@ body {
         margin-left: 300px;
     }
 
+}
+
+@media only screen and (max-width: 768px) {
+    #headerLogo {
+        display: none;
+    }
 }
