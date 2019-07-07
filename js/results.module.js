@@ -84,7 +84,7 @@ const resultsModule = (function () {
     return `
        <nav id="drawer" class="${isOpen ? 'open' : ''}">
           <button id="js-create-route" class="resultsPageButton" type="button">Create Route</button>
-          <section id="createRouteGuide">Create a custom route by selecting breweries from map by clicking on the beer icon.</section>
+          <section id="createRouteGuide">Create a custom route by selecting breweries from map and clicking on the beer icon.</section>
             <ul class="resultsListNav">
             ${userLocations}
             </ul>
