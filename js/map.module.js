@@ -52,13 +52,8 @@ const mapModule = (function () {
       infowindow.close(e);
     });
 
-
-
     return marker;
-
   }
-
-
 
   function _renderMarkers(state) {
     const locationMarkers = state.locations.map(_makeMarker)
@@ -136,7 +131,7 @@ const mapModule = (function () {
       suppressMarkers: true
     });
     directionsDisplay.setPanel(document.getElementById('directions-display'));
-    
+
 
     _render = mapRender;
     let address = state.currentCity;
@@ -157,7 +152,7 @@ const mapModule = (function () {
 
   function createRoute(userLocations) {
     let waypts = generateWaypoints(userLocations);
-    
+
     const removeOrigin = waypts.shift();
     const removeDestination = waypts.pop();
 

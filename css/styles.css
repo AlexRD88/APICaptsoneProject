@@ -285,6 +285,20 @@ body {
 
 }
 
+#createRouteGuide {
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 18px;
+    width: 85%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.clickDisable {
+    cursor: not-allowed;
+}
+
 /* spinner */
 .spinner-1:before {
     content: "";

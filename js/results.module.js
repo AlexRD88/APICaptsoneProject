@@ -85,6 +85,7 @@ const resultsModule = (function () {
     return `
        <nav id="drawer" class="${isOpen ? 'open' : ''}">
           <button id="js-create-route" class="resultsPageButton" type="button">Create Route</button>
+          <section id="createRouteGuide">Create a custom route by selecting breweries from map by clicking on the beer icon.</section>
             <ul class="resultsListNav">
             ${userLocations}
             </ul>
@@ -104,11 +105,16 @@ const resultsModule = (function () {
   }
 
   function handleCreateRoute(state) {
-    $('#js-create-route').click(function (e) {
-      mapModule.createRoute(state.userLocations)
-    })
+    
+      if (state.userLocations.length < 2) {
+        $('.resultsPageButton').addClass('clickDisable').prop('disabled')
+      } else { $('#js-create-route').click(function (e) {
+        mapModule.createRoute(state.userLocations)
+      })
+    
 
   }
+}
 
   function renderPage(state) {
 
