@@ -15,7 +15,6 @@ const resultsModule = (function () {
         .then(locations => {
           state.locations = locations
           state.currentCity = searchCity
-          console.log(state)
           _render(state);
           $(".spinner-wrapper").addClass("hidden")
         })

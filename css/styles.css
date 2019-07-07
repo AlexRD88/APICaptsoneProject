@@ -18,7 +18,6 @@ button {
     background-color: #F27405;
     color: black;
     font-family: 'Lora', serif;
-    border: 2px solid #BF4904;
 }
 
 h2 {
@@ -35,7 +34,7 @@ p {
     padding: 50px;
     width: 120%;
     text-align: center;
-    margin-top: -150px;
+    
 }
 
 .main-header {
@@ -155,7 +154,8 @@ form {
     font-size: 16px;
     font-family: 'Lora', serif;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 32px;
+
 }
 
 .resultsPageButton:hover {
@@ -163,8 +163,8 @@ form {
 }
 
 .beerLogo {
-    width: 465px;
-    margin-top: -55px;
+    width: 300px;
+    margin-top: 20px;
 }
 
 #getResults {
@@ -228,7 +228,7 @@ body {
 
 #drawer {
     position: fixed;
-    top: 53px;
+    top: 51px;
     left: -100%;
     width: 100%;
     /* add breakpoint to have right:0 on larger screens */
@@ -278,7 +278,7 @@ body {
     height: 100%;
     float: right;
     overflow: auto;
-    background-color: white;
+    background-color: #F2B705;
     font-family: 'Roboto', 'sans-serif';
     line-height: 30px;
     padding-left: 10px;
@@ -300,9 +300,19 @@ body {
 }
 
 #headerLogo {
-    position: absolute;
-    top: -57px;
-    left: 55px;
+    position: fixed;
+    left: 100px;
+}
+#directions-display {
+    width: 67%;
+    height: 100%;
+    float: right;
+    background-color: #F2B705;
+    font-family: Roboto, sans-serif;
+    line-height: 30px;
+    padding-left: 10px;
+    overflow: auto;
+    margin-right: 32px;
 }
 
 /* spinner */
