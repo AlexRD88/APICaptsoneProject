@@ -99,7 +99,9 @@ const resultsModule = (function () {
           <form id="getNewResults">
             <i id="toggle-nav" class="fa fa-bars fa-2x"></i>
             <input class="resultsPageSearch city-name-input" id="cityName" type="text" placeholder="Miami, Los Angeles, New york" required>
-            <button id="submitButton" class="resultsPageFBSubmit city-name-search" type="submit" value="search">Find Breweries</button>
+            <button id="submitButton" class="resultsPageFBSubmit city-name-search" type="submit" value="search"><i class="fas fa-search"></i>
+
+            </button>
           </form>
         </header>
     `

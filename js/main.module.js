@@ -50,28 +50,3 @@ $(mainModule.run);
 
 
 
-// MAIN MODULE
-
-// function render(state) {
-//     if(state.currentPage === 'list') {
-//       listModule.render(state)
-//     } else if (state.currentPage === 'listDetail') {
-//       renderDetailPage(state);
-//     }
-// }
-
-// function main() {
-//   render(STORE);
-// }
-
-// $(main);
-
-
-// #1
-// function createModule(argument) {
-//   return {  
-//     test: argument
-//   }
-// }
-
-// const mainModule = createModule("string");

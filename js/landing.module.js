@@ -40,7 +40,9 @@ const landingModule = (function () {
         <h2>Enter a city name to begin!</h2>
         <form id="getResults">
           <input class="landingPageSearch city-name-input" id="cityName" type="text" placeholder="Miami, Los Angeles, New york" required>
-          <button id="submitButton" class="landingPageButton city-name-search" type="submit" value="search">Find Breweries</button>
+          <button id="submitButton" class="landingPageButton city-name-search" type="submit" value="search"><i class="fas fa-search"></i>
+
+          </button>
         </form>
       </div>
     `

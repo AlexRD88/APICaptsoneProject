@@ -108,6 +108,8 @@ const mapModule = (function () {
 
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
+      panControl: false,
+      streetViewControl: false,
       center: {
         lat: 0,
         lng: 0
