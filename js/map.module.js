@@ -81,7 +81,7 @@ const mapModule = (function () {
         }
         _render(newState);
       }
-
+      
     })
   }
 

@@ -266,7 +266,7 @@ body {
 
 }
 
-#directions-display {
+.directions-display {
     width: 400px;
     height: 100%;
     float: right;
@@ -307,6 +307,19 @@ body {
     padding-left: 10px;
     overflow: auto;
     margin-right: 32px;
+}
+
+#directions-popup {
+    width: auto;
+    height: auto;
+    background-color: #F2B705;
+    z-index: 3;
+    border-radius: 12px;
+    padding: 5px;
+    position: absolute;
+    right: 6%;
+    top: 94%;
+    cursor: help;
 }
 
 /* spinner */

@@ -52,7 +52,6 @@ const resultsModule = (function () {
         ...state,
         userLocations: updatedLocations
       }
-      console.log("remove location", newState)
 
       _render(newState)
 
@@ -112,10 +111,10 @@ const resultsModule = (function () {
       if (state.userLocations.length < 2) {
         $('.resultsPageButton').addClass('clickDisable').prop('disabled')
       } else { $('#js-create-route').click(function (e) {
-        mapModule.createRoute(state.userLocations)
+        mapModule.createRoute(state.userLocations);
+        $('.directions-display').removeClass('hidden');
+        $('.directions-popup').removeClass('hidden');
       })
-    
-
   }
 }
 
