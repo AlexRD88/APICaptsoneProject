@@ -16,7 +16,7 @@ const mapModule = (function () {
         ${location.streetAddress} <br>
         ${location.phoneNumber} <br>
         ${location.established} <br>
-        <i class="fa fa-beer fa-2x addBtn" data-add-location id="beerGlass"></i>
+        <button class="fa fa-beer fa-2x addBtn" data-add-location id="beerGlass" type="button"></button>
       </li>    
     `
   }
@@ -43,16 +43,19 @@ const mapModule = (function () {
       title: `${location.name}`
     });
 
-    marker.addListener('click', function () {
-      infowindow.close();
-      infowindow.open(map, this);
 
+    marker.addListener('click', function () {
+      infowindow.open(map, marker);
     });
+
     google.maps.event.addListener(map, "click", function (e) {
       infowindow.close(e);
     });
 
-    return marker;
+    $('#beerGlass').click(function () {
+      infowindow.close();
+    });
+
   }
 
   function _renderMarkers(state) {
@@ -81,7 +84,6 @@ const mapModule = (function () {
         }
         _render(newState);
       }
-      
     })
   }
 

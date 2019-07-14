@@ -93,7 +93,7 @@ const resultsModule = (function () {
   function renderHeader() {
     return `
         <header class="main-header">
-        <section id="headerLogo"><a href="index.html"><img src="images/beerLogo.png" style= "height: 100%;
+        <section id="headerLogo"><a href="index.html"><img src="images/beerLogo.png" alt="beer routes logo" style= "height: 100%;
         width: 40%;"></a></section>
           <form id="getNewResults">
             <i id="toggle-nav" class="fa fa-bars fa-2x"></i>

@@ -34,7 +34,7 @@ const landingModule = (function () {
     const html = `
       <div class="lp-container">
         <figure>
-            <img class="beerLogo" src="images/beerLogo.png" alt="Brew App Logo">
+            <img class="beerLogo" src="images/beerLogo.png" alt="Beer Routes Logo">
         </figure>
         <p>Create your very own custom micro brewery route for any U.S. city</p>
         <h2>Enter a city name to begin!</h2>
