@@ -5,7 +5,6 @@ const apiModule = (function () {
 
 
   function watchSubmitForm() {
-    console.log("watchsubmit ran")
     $('#getResults').submit(e => {
       e.preventDefault();
       let searchCity = $('#cityName').val();

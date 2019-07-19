@@ -291,6 +291,9 @@ body {
 
 .clickDisable {
     cursor: not-allowed;
+    background-color: lightgrey;
+    color: grey;
+
 }
 
 #headerLogo {
@@ -306,7 +309,7 @@ body {
     font-family: Roboto, sans-serif;
     line-height: 30px;
     padding-left: 10px;
-    overflow: auto;
+    overflow: hidden;
     margin-right: 32px;
 }
 

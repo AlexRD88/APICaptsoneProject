@@ -6,7 +6,13 @@ const mapModule = (function () {
   let map;
   let directionsService;
   let directionsDisplay;
+  const infowindows = [];
 
+  function hideAllInfoWindows(){
+    infowindows.forEach(function(infowindow){
+      infowindow.close();
+    })
+  }
 
   function _renderContent(location) {
 
@@ -16,7 +22,7 @@ const mapModule = (function () {
         ${location.streetAddress} <br>
         ${location.phoneNumber} <br>
         ${location.established} <br>
-        <button class="fa fa-beer fa-2x addBtn" data-add-location id="beerGlass" type="button"></button>
+        <button class="fa fa-beer fa-2x addBtn" data-add-location type="button"></button>
       </li>    
     `
   }
@@ -32,6 +38,7 @@ const mapModule = (function () {
 
     const contentString = _renderContent(location);
     const infowindow = _makeInfoWindow(contentString);
+    infowindows.push(infowindow);
     const latLng = {
       lat: location.latitude,
       lng: location.longitude
@@ -46,19 +53,25 @@ const mapModule = (function () {
 
     marker.addListener('click', function () {
       infowindow.open(map, marker);
+      $(`[data-id='${location.id}']`).on('click',function(){
+        infowindow.close();
+        console.log('clicked me')
+      })
     });
 
     google.maps.event.addListener(map, "click", function (e) {
       infowindow.close(e);
     });
 
-    $('#beerGlass').click(function () {
-      infowindow.close();
-    });
-
   }
 
   function _renderMarkers(state) {
+    //if (state.markers === state.locations){
+     // return
+    //}
+
+    // if (userLocations.id === state.id)
+
     const locationMarkers = state.locations.map(_makeMarker)
     _handleAddLocation(state);
     geocodeAddress(state.currentCity)
@@ -77,6 +90,7 @@ const mapModule = (function () {
       const addedLocation = state.locations.find(function (location) {
         return dataId === location.id
       })
+      hideAllInfoWindows();
       if (addedLocation) {
         const newState = {
           ...state,
@@ -191,6 +205,6 @@ const mapModule = (function () {
     renderMarkers: _renderMarkers,
     initiate,
     createRoute
-
+    
   }
 })();
